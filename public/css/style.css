@@ -1,0 +1,160 @@
+/* article preview styles */
+
+header {
+  background-color: rgb(116, 103, 103);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+h1 a {
+  color: white;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  background-color: #f2f2f2;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  color: #333;
+  text-decoration: none;
+  padding: 5px;
+}
+
+nav ul li a:hover {
+  background-color: #ccc;
+  color: #fff;
+}
+
+#article-previews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.article-image {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin-right: 0;
+}
+
+.article-content {
+  text-align: left;
+}
+
+.article-content a.read-more:hover {
+  background-color: #0062cc;
+}
+
+.recent-posts {
+  text-align: left;
+  font-size: 35px;
+  margin-bottom: 0px;
+}
+
+.article-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.article-preview {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+}
+
+.article-preview h2 {
+  font-size: 24px;
+  margin: 0 0 10px 0;
+}
+
+.article-preview p {
+  font-size: 16px;
+  margin: 0 0 10px 0;
+}
+
+.article-preview a {
+  display: inline-block;
+  font-size: 24px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.article-preview a:hover {
+  background-color: #0062cc;
+}
+
+/* pagination styles */
+
+.pagination {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.pagination a {
+  display: inline-block;
+  font-size: 16px;
+  padding: 5px 10px;
+  background-color: #f2f2f2;
+  color: #007bff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.pagination a:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Footer styles */
+
+footer {
+  background-color: rgb(116, 103, 103);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+footer ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+footer ul li {
+  margin: 0 10px;
+}
+
+footer ul li a {
+  color: #fff;
+  text-decoration: none;
+}
