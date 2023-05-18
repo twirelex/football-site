@@ -90,6 +90,9 @@ nav ul li a:hover {
   font-size: 24px;
   margin: 0 0 10px 0;
 }
+.article-preview h2 a {
+  background-color: transparent;
+}
 
 .article-preview p {
   font-size: 16px;
@@ -101,13 +104,17 @@ nav ul li a:hover {
   font-size: 24px;
   padding: 5px 10px;
   background-color: #007bff;
-  color: #fff;
+  color: rgb(46, 46, 46);
   text-decoration: none;
   border-radius: 5px;
 }
 
 .article-preview a:hover {
   background-color: #0062cc;
+}
+
+.article-preview h2 a:hover {
+  background-color: transparent;
 }
 
 /* pagination styles */

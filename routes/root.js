@@ -1,10 +1,18 @@
 const path = require('path');
 const fs = require('fs');
-const articlesPerPage = 5; // Number of articles per page
+const util = require('util');
+const readFile = util.promisify(fs.readFile);
+let cachedArticles = null;
+const articlesPerPage = 10; // Number of articles per page
 
 module.exports = async function (fastify, opts) {
   fastify.get('/', async function (request, reply) {
-    const articles = JSON.parse(fs.readFileSync(path.join(__dirname, '../articles.json')));
+    if (!cachedArticles) {
+      const articlesData = await readFile(path.join(__dirname, '../articles.json'));
+      cachedArticles = JSON.parse(articlesData);
+    }
+
+    const articles = cachedArticles.slice().sort((a, b) => b.timestamp - a.timestamp);
     const page = parseInt(request.query.page) || 1; // Get the current page number from the query parameter
 
     const startIndex = (page - 1) * articlesPerPage;
@@ -16,9 +24,9 @@ module.exports = async function (fastify, opts) {
       const preview = article.content.split(' ').slice(0, 20).join(' ');
       return `
             <div class="article-preview">
-                <img class="article-image" src="${article.image}" alt="Article Image">
+                <img class="article-image" src="${article.image}" alt="${article.image.split('/')[2].split('\.')[0].replaceAll('_',' ')}">
                 <div class="article-content">
-                <h2>${article.title}</h2>
+                    <h2><a class="article-title" href="${article.link}">${article.title}</a></h2>
                     <p>${preview}...</p>
                     <a href="${article.link}">Read more</a> <b> Published</b>: 
                     ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}
@@ -41,20 +49,27 @@ module.exports = async function (fastify, opts) {
 
     const html = `
         <!DOCTYPE html>
-        <html>
+        <html lang="en">
         <head>
             <title>Everything Soccer</title>
+
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta charset="UTF-8">
+            <meta name="description" content="Stay updated with the latest soccer news, match highlights, player interviews, and more. Everything Soccer brings you comprehensive coverage of the world of soccer.">
             <link rel="stylesheet" type="text/css" href="css/style.css">
-            <nav>
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About Us</a></li>
-                <li><a href="/contact">Contact Us</a></li>
-            </ul>
-        </nav>
+            <link rel="icon" type="image/jpg" href="/images/logo.jpg">
+            
+
+           
         </head>
         <body>
+        <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+        </ul>
+    </nav>
             <header>
             <h1><a href="/">Everything Soccer</a></h1>
             </header>
@@ -69,13 +84,13 @@ module.exports = async function (fastify, opts) {
             </div>
             <footer>
                 <ul>
+                <li><a href="/privacy-policy">Privacy Policy</a></li>
                     <li><a href="/about">About Us</a></li>
                     <li><a href="/contact">Contact Us</a></li>
                 </ul>
 
                 <p>&copy; 2023, All Rights Reserved | Everything Soccer</p>
             </footer>
-            <script src="/js/main.js"></script>
         </body>
         </html>
     `;
