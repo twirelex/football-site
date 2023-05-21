@@ -15,11 +15,16 @@ module.exports = async function (fastify, opts) {
 
         const html = `
             <!DOCTYPE html>
-            <html>
+            <html lang="en">
             <head>
                 <title>${article.title}</title>
+
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7856750998491880"
+     crossorigin="anonymous"></script>
+
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <link rel="stylesheet" type="text/css" href="/css/style.css">
+                <link rel="icon" type="image/jpg" href="/images/logo.jpg">
                 <style>
                     .article-container {
                         display: flex;
@@ -90,14 +95,17 @@ module.exports = async function (fastify, opts) {
                 </header>
                 <div class="article-container">
                 <h1 class="article-title">${article.title}</h1>
-                    <img class="article-image" src="../${article.image}" alt="Article Image">
+                    <img class="article-image" src="../${article.image}" alt="${article.image.split('/')[2].split('\.')[0].replace('_',' ')}">
                     <div class="article-contents">${article.content}</div> 
                     <b> Published: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</b>
                 </div>
                 <footer>
                     <ul>
-                        <li><a href="/about">About Us</a></li>
-                        <li><a href="/contact">Contact Us</a></li>
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
+                    <li><a href="/disclaimer">Disclaimer</a></li>
+                    <li><a href="/dcma-takedown">Dcma</a></li>
                     </ul>
                     <p>&copy; ${new Date().getFullYear()}, All Rights Reserved | Everything Soccer</p>
                 </footer>

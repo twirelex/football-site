@@ -3,7 +3,7 @@ const fs = require('fs');
 const util = require('util');
 const readFile = util.promisify(fs.readFile);
 let cachedArticles = null;
-const articlesPerPage = 10; // Number of articles per page
+const articlesPerPage = 13; // Number of articles per page
 
 module.exports = async function (fastify, opts) {
   fastify.get('/', async function (request, reply) {
@@ -85,8 +85,10 @@ module.exports = async function (fastify, opts) {
             <footer>
                 <ul>
                 <li><a href="/privacy-policy">Privacy Policy</a></li>
-                    <li><a href="/about">About Us</a></li>
-                    <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact Us</a></li>
+            <li><a href="/disclaimer">Disclaimer</a></li>
+            <li><a href="/dcma-takedown">Dcma</a></li>
                 </ul>
 
                 <p>&copy; 2023, All Rights Reserved | Everything Soccer</p>
