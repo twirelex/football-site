@@ -19,9 +19,6 @@ module.exports = async function (fastify, opts) {
             <head>
                 <title>${article.title}</title>
 
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7856750998491880"
-     crossorigin="anonymous"></script>
-
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <link rel="stylesheet" type="text/css" href="/css/style.css">
                 <link rel="icon" type="image/jpg" href="/images/logo.jpg">

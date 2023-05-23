@@ -70,6 +70,7 @@ module.exports = async function (fastify, opts) {
             <li><a href="/contact">Contact Us</a></li>
         </ul>
     </nav>
+    
             <header>
             <h1><a href="/">Everything Soccer</a></h1>
             </header>
