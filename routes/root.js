@@ -3,7 +3,7 @@ const fs = require('fs');
 const util = require('util');
 const readFile = util.promisify(fs.readFile);
 let cachedArticles = null;
-const articlesPerPage = 13; // Number of articles per page
+const articlesPerPage = 17; // Number of articles per page
 
 module.exports = async function (fastify, opts) {
   fastify.get('/', async function (request, reply) {
